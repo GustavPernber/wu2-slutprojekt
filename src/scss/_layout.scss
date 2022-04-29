@@ -1,2 +1,11 @@
 @import './utilities/variables';
 @import './utilities/typography';
+
+@import './components/header';
+@import './components/cameraCards';
+
+.App{
+    background-color: $darkBlue;
+    width: 100%;
+    min-height: 100vh;
+}

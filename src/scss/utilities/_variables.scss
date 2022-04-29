@@ -2,7 +2,15 @@ $darkBlue:#0F172A;
 $lightBlue:#38BDF8;
 $blueGrey:#1E293B;
 $green:#3BBA9C;
+$hoverGreen:#2d987f;
 $white: white;
 $grey:#909090;
 
-$radius:10px;
+$radius:6px;
+
+
+@mixin center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
