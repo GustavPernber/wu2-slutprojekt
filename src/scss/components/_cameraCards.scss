@@ -1,0 +1,94 @@
+@import './../utilities/typography';
+@import './../utilities/variables';
+
+
+article.cameraCard{
+
+    border-radius: $radius;
+    width: 25rem;
+    background-color: $blueGrey;
+    padding: 1.4rem 1.4rem 2rem 1.4rem;
+    @include center;
+    flex-direction: column;
+    justify-content: flex-start;
+    
+
+    >figure{
+        border: 2px solid $white;
+        border-radius: $radius;
+        width: 100%;
+        height: 15rem;
+        @include center;
+        overflow: hidden;
+
+        >img{
+            // width: 100%;
+            height: 100%;
+        }
+    }
+
+    >div{
+        row-gap: 0.6rem;
+
+        margin-top:1.5rem;
+        width: 100%;
+
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+
+        >div{
+            align-self: flex-end;
+            grid-column: 1;
+            @include center;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.1rem;
+            
+            p{
+                font-size: 0.8rem;
+                color: $grey;
+
+                &.update{
+                    font-weight: 600;
+                    color: $lightBlue;
+                    text-decoration: underline 2px;
+                    
+                    &:hover{
+                        cursor: pointer;
+                        
+                    }
+
+                }
+            }
+
+        }
+
+        h1{
+            grid-column: span 2;
+            font-weight: 400;
+        }
+
+        button{
+            border: 2px solid $green;
+            border-radius: $radius;
+            background: none;
+            width: 8rem;
+            justify-self: right;
+            min-height: 2.5rem;
+            align-self: flex-end;
+            transition: 0.1s;
+
+            &:hover{
+                transition: 0.1s;
+                background-color: $hoverGreen;
+                border: 2px solid $hoverGreen;
+                cursor: pointer;
+            }
+
+        }
+
+    }
+
+
+}

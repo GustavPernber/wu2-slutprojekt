@@ -8,4 +8,24 @@
     background-color: $darkBlue;
     width: 100%;
     min-height: 100vh;
+    padding-bottom: 15rem;
+}
+
+main{
+    @include center;
+    padding-top: 3rem;
+    >div{
+        width: $width;
+
+        column-gap: 1rem;
+        margin-top: 2rem;
+
+        row-gap: 4rem;
+
+        display: grid;
+        grid-template-columns: min-content 1fr min-content;
+        // place-items: center;
+        justify-items:center;
+        
+    }
 }
