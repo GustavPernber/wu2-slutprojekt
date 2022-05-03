@@ -7,6 +7,7 @@ import {useEffect, useState} from 'react'
 function App() {
 
   const [cameras, setCameras] = useState([])
+  const [time, setTime] = useState(new Date().toLocaleTimeString())
   const key="be8d3bf5-7ce0-4677-8d47-2dd6ed7696fc"
 
   useEffect(()=>{
@@ -17,16 +18,25 @@ function App() {
     console.log('getting cameras');
     const url=`http://data.goteborg.se/TrafficCamera/v1.0/TrafficCameras/${key}?format=json`
     const result= await (await fetch(url)).json()
-
-    console.log(result)
     setCameras(result)
   }
 
+  async function updateAllImages(){
+    //Loopa igenom alla kameror, kör getimg 
+  }
 
+  // async function getImage(id){
+  //   console.log('getting image');
+  //   const url=`http://data.goteborg.se/TrafficCamera/v1.0/CameraImage/${key}/${id}`
+  //   const result = await (await fetch(url)).blob()
+  //   const imgUrl=URL.createObjectURL(result)
+
+  //   return imgUrl
+  // }
 
   return (
     <div className="App">
-      <Header updateCameras={getAllCameras}></Header>
+      <Header time={time} updateCameras={getAllCameras}></Header>
       <main>
         <div>
           <div>
@@ -37,7 +47,7 @@ function App() {
                 apiKey:key
               }
 
-              return(<CameraCard key={data.Name} data={obj}></CameraCard>)
+              return(<CameraCard getImage={getImage} key={data.Name} data={obj}></CameraCard>)
               
 
 

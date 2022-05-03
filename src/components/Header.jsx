@@ -9,11 +9,11 @@ export default function Header(props){
         <header className="siteHeader">
             <div>
 
-                <h1>GBG kameror</h1>
+                <h1>GBG Kameror</h1>
 
                 <div>
                     <button onClick={test}>Uppdatera kameror</button>
-                    <p>Senast uppdaterad: 10:35</p>
+                    <p>Senast uppdaterad: {props.time}</p>
                 </div>
             </div>
         </header>

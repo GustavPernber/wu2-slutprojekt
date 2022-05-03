@@ -3,41 +3,31 @@ import { useEffect, useState } from "react"
 export default function CameraCard(props){    
 
     const [image, setImage]=useState("")
-    const [loading, setLoading]=useState(true)
     const [animate, setAnimate] = useState(false)
 
     useEffect(()=>{
-        getImage()
+        updateImage()
     }, [])
 
-    async function getImage(){
-        console.log('getting image');
-        const url=`http://data.goteborg.se/TrafficCamera/v1.0/CameraImage/${props.data.apiKey}/${props.data.id}`
-        const result = await (await fetch(url)).blob()
-        const imgUrl=URL.createObjectURL(result)
-    
-        setImage(imgUrl)
-        setLoading(false)
-    }
+    // async function updateImage(){
+    //     setImage(await props.getImage(props.data.id))
 
-    function updateClick(){
-        setAnimate(true)
-        setTimeout(() => {
-            setAnimate(false)
-        }, 2000);
+    // }
 
-        getImage()
-    }
+    // async function handleUpdateClick(){
+    //     setAnimate(true)
+    //     setTimeout(() => {
+    //         setAnimate(false)
+    //     }, 2000);
+    //     updateImage()
+    // }
+
 
     return(
         <article className="cameraCard">
             <figure>
-                {loading ? 
-                 null
-                :
-                <img src={image} alt="" />
-                }
-               
+                <img src={props.data.image} alt="" />
+                
             </figure>
 
             <div>
@@ -45,7 +35,7 @@ export default function CameraCard(props){
 
                 <div>
                     <p>Senast uppdaterad</p>
-                    <div className={`updateBtn ${animate ? "animate" : ""}`} onClick={updateClick}>
+                    <div className={`updateBtn ${animate ? "animate" : ""}`} >
                         
                         <p className="update">Uppdatera</p>
                         <span className="material-icons">
