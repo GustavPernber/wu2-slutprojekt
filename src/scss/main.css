@@ -239,6 +239,12 @@ article.cameraCard > div > div > div.updateBtn {
           align-items: center;
   -webkit-column-gap: 0.1rem;
           column-gap: 0.1rem;
+  padding: 0.4rem;
+}
+
+article.cameraCard > div > div > div.updateBtn:hover {
+  background-color: rgba(255, 255, 255, 0.11);
+  border-radius: 6px;
 }
 
 article.cameraCard > div > div > div.updateBtn.animate span {
