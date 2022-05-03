@@ -248,17 +248,19 @@ main > div {
 }
 
 main > div > div {
-  width: 100%;
-  -webkit-column-gap: 1rem;
-          column-gap: 1rem;
-  margin-top: 2rem;
-  row-gap: 4rem;
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: min-content 1fr min-content;
-      grid-template-columns: -webkit-min-content 1fr -webkit-min-content;
-      grid-template-columns: min-content 1fr min-content;
-  justify-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  justify-content: center;
+  gap: 4rem;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 *, html {

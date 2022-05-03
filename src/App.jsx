@@ -28,7 +28,6 @@ function App() {
     <div className="App">
       <Header updateCameras={getAllCameras}></Header>
       <main>
-
         <div>
           <div>
             {cameras.map((data)=>{
@@ -46,12 +45,6 @@ function App() {
 
           </div>
         </div>
-
-          {/* <CameraCard></CameraCard>
-          <CameraCard></CameraCard>
-          <CameraCard></CameraCard>
-          <CameraCard></CameraCard> */}
-
       </main>
     </div>
   );

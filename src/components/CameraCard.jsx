@@ -10,19 +10,24 @@ export default function CameraCard(props){
     }, [])
 
     async function getImage(){
-        const id = props.data.id
+        console.log('getting image');
         const url=`http://data.goteborg.se/TrafficCamera/v1.0/CameraImage/${props.data.apiKey}/${props.data.id}`
         const result = await (await fetch(url)).blob()
         const imgUrl=URL.createObjectURL(result)
     
         setImage(imgUrl)
+        setLoading(false)
     }
 
     return(
         <article className="cameraCard">
             <figure>
-
+                {loading ? 
+                 null
+                :
                 <img src={image} alt="" />
+                }
+               
             </figure>
 
             <div>
@@ -30,7 +35,14 @@ export default function CameraCard(props){
 
                 <div>
                     <p>Senast uppdaterad</p>
-                    <p className="update">Uppdatera</p>
+                    <div className="updateBtn">
+                    <p className="update" onClick={getImage}>Uppdatera</p>
+                    
+                    <span className="material-icons">
+                        refresh
+                    </span>
+
+                    </div>
                 </div>
 
                 <button>
