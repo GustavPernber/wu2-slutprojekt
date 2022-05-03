@@ -16,19 +16,20 @@ function App() {
   
   async function getAllCameras(){
     console.log('getting cameras');
+
     const url=`http://data.goteborg.se/TrafficCamera/v1.0/TrafficCameras/${key}?format=json`
     const result= await (await fetch(url)).json()
 
-    await result.map(async(obj)=>{
-      let newObj={
-        ...obj,
-        img: await getImage(obj.Id)
-      }
-      console.log(newObj);
-      return newObj
-    })
+    // let newResult=[]
 
-    setCameras(result)
+    const newResult={
+      id:result.Id,
+      name:result.Name,
+      imgURL:result.CameraImageUrl
+    }
+
+    // console.log(result);
+    setCameras(newResult)
   }
 
   // async function updateAllImages(){
@@ -52,7 +53,8 @@ function App() {
           <div>
             {cameras.map((data)=>{
 
-              return(<CameraCard key={data.Name} id={data.Id} name={data.Name.split('_')[1]} ></CameraCard>)
+              return(<CameraCard ></CameraCard>)
+              // return(<CameraCard key={data.name} id={data.id} name={data.name.split('_')[1]} ></CameraCard>)
 
             })}
 
