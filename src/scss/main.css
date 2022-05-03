@@ -1,6 +1,27 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@-webkit-keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
 h1, h2, h3, h4, h5, h6, p, input, a, button {
   font-family: 'Poppins', sans-serif;
   color: white;
@@ -9,6 +30,17 @@ h1, h2, h3, h4, h5, h6, p, input, a, button {
 h1, h2, h3, h4, h5, h6, p, input, a, button {
   font-family: 'Poppins', sans-serif;
   color: white;
+}
+
+@keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
 }
 
 header.siteHeader {
@@ -96,6 +128,17 @@ h1, h2, h3, h4, h5, h6, p, input, a, button {
   color: white;
 }
 
+@keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
 article.cameraCard {
   border-radius: 6px;
   width: 22rem;
@@ -178,20 +221,41 @@ article.cameraCard > div > div {
   gap: 0.1rem;
 }
 
-article.cameraCard > div > div p {
+article.cameraCard > div > div > p {
   font-size: 0.8rem;
   color: #909090;
 }
 
-article.cameraCard > div > div p.update {
-  font-weight: 600;
-  color: #38BDF8;
-  -webkit-text-decoration: underline 2px;
-          text-decoration: underline 2px;
+article.cameraCard > div > div > div.updateBtn {
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-column-gap: 0.1rem;
+          column-gap: 0.1rem;
 }
 
-article.cameraCard > div > div p.update:hover {
-  cursor: pointer;
+article.cameraCard > div > div > div.updateBtn.animate span {
+  -webkit-animation: spin 1s;
+          animation: spin 1s;
+}
+
+article.cameraCard > div > div > div.updateBtn span {
+  color: #38BDF8;
+  font-size: 1.2rem;
+  margin-top: 0.1rem;
+}
+
+article.cameraCard > div > div > div.updateBtn p.update {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #38BDF8;
 }
 
 article.cameraCard > div h1 {

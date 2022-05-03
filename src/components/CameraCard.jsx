@@ -4,6 +4,7 @@ export default function CameraCard(props){
 
     const [image, setImage]=useState("")
     const [loading, setLoading]=useState(true)
+    const [animate, setAnimate] = useState(false)
 
     useEffect(()=>{
         getImage()
@@ -17,6 +18,15 @@ export default function CameraCard(props){
     
         setImage(imgUrl)
         setLoading(false)
+    }
+
+    function updateClick(){
+        setAnimate(true)
+        setTimeout(() => {
+            setAnimate(false)
+        }, 2000);
+
+        getImage()
     }
 
     return(
@@ -35,12 +45,12 @@ export default function CameraCard(props){
 
                 <div>
                     <p>Senast uppdaterad</p>
-                    <div className="updateBtn">
-                    <p className="update" onClick={getImage}>Uppdatera</p>
-                    
-                    <span className="material-icons">
-                        refresh
-                    </span>
+                    <div className={`updateBtn ${animate ? "animate" : ""}`} onClick={updateClick}>
+                        
+                        <p className="update">Uppdatera</p>
+                        <span className="material-icons">
+                            refresh
+                        </span>
 
                     </div>
                 </div>

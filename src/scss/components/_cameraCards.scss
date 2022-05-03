@@ -50,22 +50,40 @@ article.cameraCard{
             align-items: flex-start;
             gap: 0.1rem;
             
-            p{
+
+            >p{
                 font-size: 0.8rem;
                 color: $grey;
+            }
 
-                &.update{
+            >div.updateBtn{
+                cursor: pointer;
+                @include center;
+                column-gap: 0.1rem;
+                
+                &.animate{
+                    span{
+                        animation: spin 1s;
+                    }
+                }
+
+                span{
+                    color: $lightBlue;
+                    font-size: 1.2rem;
+                    margin-top: 0.1rem;
+                
+                    
+                }
+
+                p.update{
+                    font-size: 0.8rem;
                     font-weight: 600;
                     color: $lightBlue;
-                    text-decoration: underline 2px;
+                    // text-decoration: underline 2px;
                     
-                    &:hover{
-                        cursor: pointer;
-                        
-                    }
-
                 }
             }
+
 
         }
 
