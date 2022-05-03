@@ -6,7 +6,7 @@ export default function CameraCard(props){
     const [animate, setAnimate] = useState(false)
 
     useEffect(()=>{
-        updateImage()
+        // updateImage()
     }, [])
 
     // async function updateImage(){
@@ -26,12 +26,12 @@ export default function CameraCard(props){
     return(
         <article className="cameraCard">
             <figure>
-                <img src={props.data.image} alt="" />
+                <img  alt="" />
                 
             </figure>
 
             <div>
-                <h1>{props.data.name}</h1>
+                <h1>{props.name}</h1>
 
                 <div>
                     <p>Senast uppdaterad</p>

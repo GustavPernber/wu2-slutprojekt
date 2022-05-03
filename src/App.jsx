@@ -18,21 +18,31 @@ function App() {
     console.log('getting cameras');
     const url=`http://data.goteborg.se/TrafficCamera/v1.0/TrafficCameras/${key}?format=json`
     const result= await (await fetch(url)).json()
+
+    await result.map(async(obj)=>{
+      let newObj={
+        ...obj,
+        img: await getImage(obj.Id)
+      }
+      console.log(newObj);
+      return newObj
+    })
+
     setCameras(result)
   }
 
-  async function updateAllImages(){
-    //Loopa igenom alla kameror, kör getimg 
-  }
-
-  // async function getImage(id){
-  //   console.log('getting image');
-  //   const url=`http://data.goteborg.se/TrafficCamera/v1.0/CameraImage/${key}/${id}`
-  //   const result = await (await fetch(url)).blob()
-  //   const imgUrl=URL.createObjectURL(result)
-
-  //   return imgUrl
+  // async function updateAllImages(){
+  //   //Loopa igenom alla kameror, kör getimg 
   // }
+
+  async function getImage(id){
+    console.log('getting image');
+    const url=`http://data.goteborg.se/TrafficCamera/v1.0/CameraImage/${key}/${id}`
+    const result = await (await fetch(url)).blob()
+    const imgUrl=URL.createObjectURL(result)
+
+    return imgUrl
+  }
 
   return (
     <div className="App">
@@ -41,15 +51,8 @@ function App() {
         <div>
           <div>
             {cameras.map((data)=>{
-              const obj={
-                id:data.Id,
-                name:data.Name.split('_')[1],
-                apiKey:key
-              }
 
-              return(<CameraCard getImage={getImage} key={data.Name} data={obj}></CameraCard>)
-              
-
+              return(<CameraCard key={data.Name} id={data.Id} name={data.Name.split('_')[1]} ></CameraCard>)
 
             })}
 
