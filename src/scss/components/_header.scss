@@ -7,6 +7,7 @@ header.siteHeader{
     @include center;
     width: 100%;
     >div{
+        // padding: 0 7rem;
 
         @include center;
         justify-content: space-between;

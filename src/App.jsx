@@ -31,26 +31,30 @@ function App() {
     <div className="App">
       <Header></Header>
       <main>
+        
         <div>
-          {cameras.map((data)=>{
-            const obj={
-              id:data.Id,
-              name:data.Name.split('_')[1],
-              url:data.CameraImageUrl
-            }
+          <div>
+            {cameras.map((data)=>{
+              const obj={
+                id:data.Id,
+                name:data.Name.split('_')[1],
+                url:data.CameraImageUrl
+              }
 
-            return(<CameraCard key={data.Name} data={obj}></CameraCard>)
-            
+              return(<CameraCard key={data.Name} data={obj}></CameraCard>)
+              
 
 
-          })}
+            })}
+
+          </div>
+        </div>
 
           {/* <CameraCard></CameraCard>
           <CameraCard></CameraCard>
           <CameraCard></CameraCard>
           <CameraCard></CameraCard> */}
 
-        </div>
       </main>
     </div>
   );

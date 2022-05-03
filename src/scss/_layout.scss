@@ -14,18 +14,25 @@
 main{
     @include center;
     padding-top: 3rem;
+    width: 100%;
+
     >div{
+    
         width: $width;
-
-        column-gap: 1rem;
-        margin-top: 2rem;
-
-        row-gap: 4rem;
-
-        display: grid;
-        grid-template-columns: min-content 1fr min-content;
-        // place-items: center;
-        justify-items:center;
-        
+        >div{
+            // width: 100%;
+            // padding: 0 7rem;
+            width: 100%;
+            column-gap: 1rem;
+            margin-top: 2rem;
+    
+            row-gap: 4rem;
+    
+            display: grid;
+            grid-template-columns: min-content 1fr min-content;
+            // place-items: center;
+            justify-items:center;
+            
+        }
     }
 }
