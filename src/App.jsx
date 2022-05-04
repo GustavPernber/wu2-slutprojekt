@@ -20,17 +20,18 @@ function App() {
 
     const url=`http://data.goteborg.se/TrafficCamera/v1.0/TrafficCameras/${key}?format=json`
     const result= await (await fetch(url)).json()
-
+    console.log(result);
     let newResult=[]
 
     for (let i = 0; i < result.length; i++) {
       const camera = result[i];
-      const imageURL= await getImage(camera.Id)
+      // const imageURL= await getImage(camera.Id)
+      const imageURL= camera.CameraImageUrl
 
       const cameraObj={
         id:camera.Id,
         name:camera.Name,
-        imgURL: imageURL
+        imgURL: imageURL 
 
       }
 
