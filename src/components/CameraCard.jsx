@@ -5,22 +5,7 @@ export default function CameraCard(props){
     const [image, setImage]=useState("")
     const [animate, setAnimate] = useState(false)
 
-    useEffect(()=>{
-        // updateImage()
-    }, [])
 
-    // async function updateImage(){
-    //     setImage(await props.getImage(props.data.id))
-
-    // }
-
-    // async function handleUpdateClick(){
-    //     setAnimate(true)
-    //     setTimeout(() => {
-    //         setAnimate(false)
-    //     }, 2000);
-    //     updateImage()
-    // }
 
 
     return(

@@ -8,6 +8,7 @@ function App() {
 
   const [cameras, setCameras] = useState([])
   const [time, setTime] = useState(new Date().toLocaleTimeString())
+
   const key="be8d3bf5-7ce0-4677-8d47-2dd6ed7696fc"
 
   useEffect(()=>{
@@ -22,7 +23,6 @@ function App() {
 
     let newResult=[]
 
-   
     for (let i = 0; i < result.length; i++) {
       const camera = result[i];
       const imageURL= await getImage(camera.Id)
@@ -38,7 +38,6 @@ function App() {
       
     }
 
-    // console.log(result);
     setCameras(newResult)
   }
 
@@ -63,7 +62,7 @@ function App() {
           <div>
             {cameras.map((data)=>{
 
-              return(<CameraCard ></CameraCard>)
+              return(<CameraCard key={data.name} imgURL={data.imgURL} name={data.name} ></CameraCard>)
               // return(<CameraCard key={data.name} id={data.id} name={data.name.split('_')[1]} ></CameraCard>)
 
             })}
