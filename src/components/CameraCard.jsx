@@ -26,7 +26,7 @@ export default function CameraCard(props){
     return(
         <article className="cameraCard">
             <figure>
-                <img  alt="" />
+                <img  src={props.imgURL} alt="" />
                 
             </figure>
 
