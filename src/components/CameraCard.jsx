@@ -2,7 +2,18 @@ import { useEffect, useState } from "react"
 
 export default function CameraCard(props){    
 
+    
     const [animate, setAnimate] = useState(false)
+    
+    function handleUpdateClick(){
+        setAnimate(true)
+
+        setTimeout(() => {
+            setAnimate(false)
+        }, 2000);
+
+        props.updateCamera(props.id)
+    }
 
     return(
         <article className="cameraCard">
@@ -16,7 +27,7 @@ export default function CameraCard(props){
 
                 <div>
                     <p>Senast uppdaterad: {props.isOn}</p>
-                    <div onClick={()=>props.updateCamera(props.id)} className={`updateBtn ${animate ? "animate" : ""}`} >
+                    <div onClick={handleUpdateClick} className={`updateBtn ${animate ? "animate" : ""}`} >
                         
                         <p className="update">Uppdatera</p>
                         <span className="material-icons">

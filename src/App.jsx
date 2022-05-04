@@ -49,7 +49,7 @@ function App() {
   }
 
 
-  //Update one camera
+  //Update one camera in state
   async function updateCamera(id){
     console.log('updating one camera');
     console.log(id);
@@ -57,31 +57,22 @@ function App() {
     let camerasCopy=[...cameras]
     let camera=camerasCopy.find(object => object.id===id)
     
-    camera.isOn="klickad bror"
-    
     const url=`http://data.goteborg.se/TrafficCamera/v1.0/CameraImage/${key}/${id}`
     const result = await (await fetch(url)).blob()
     const imgUrl=URL.createObjectURL(result)
-
+    
+    camera.isOn="klickad bror"
+  
     camera.imgURL=imgUrl
   
-   
-
     setCameras(camerasCopy)
 
-
-
-
-    // const url=`http://data.goteborg.se/TrafficCamera/v1.0/CameraImage/${key}/${id}`
-    // const result = await (await fetch(url)).blob()
-    // const imgUrl=URL.createObjectURL(result)
-
-    // return imgUrl
   }
 
   return (
     <div className="App">
       <Header time={time} updateCameras={updateAllCameras}></Header>
+      
       <main>
         <div>
           <div>
