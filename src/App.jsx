@@ -32,8 +32,7 @@ function App() {
         id:camera.Id,
         name:camera.Name,
         imgURL: imageURL,
-        isOn:false 
-
+        isOn:"true"
 
       }
 
@@ -49,14 +48,35 @@ function App() {
     //Loopa igenom alla kameror, kör getimg
   }
 
+
   //Update one camera
   async function updateCamera(id){
-    console.log('getting image');
+    console.log('updating one camera');
+    console.log(id);
+
+    let camerasCopy=[...cameras]
+    let camera=camerasCopy.find(object => object.id===id)
+    
+    camera.isOn="klickad bror"
+    
     const url=`http://data.goteborg.se/TrafficCamera/v1.0/CameraImage/${key}/${id}`
     const result = await (await fetch(url)).blob()
     const imgUrl=URL.createObjectURL(result)
 
-    return imgUrl
+    camera.imgURL=imgUrl
+  
+   
+
+    setCameras(camerasCopy)
+
+
+
+
+    // const url=`http://data.goteborg.se/TrafficCamera/v1.0/CameraImage/${key}/${id}`
+    // const result = await (await fetch(url)).blob()
+    // const imgUrl=URL.createObjectURL(result)
+
+    // return imgUrl
   }
 
   return (
@@ -68,9 +88,7 @@ function App() {
             {cameras.map((data)=>{
 
               return(<CameraCard updateCamera={updateCamera}
-                key={data.name} imgURL={data.imgURL} name={data.name} ></CameraCard>)
-              // return(<CameraCard key={data.name} id={data.id} name={data.name.split('_')[1]} ></CameraCard>)
-
+                key={data.name} id={data.id} imgURL={data.imgURL} isOn={data.isOn} name={data.name} ></CameraCard>)
             })}
 
           </div>
