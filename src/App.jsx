@@ -15,23 +15,25 @@ function App() {
     getAllCameras()
   },[])
   
+  //Fetches all cameras and sets in state
   async function getAllCameras(){
     console.log('getting cameras');
 
     const url=`http://data.goteborg.se/TrafficCamera/v1.0/TrafficCameras/${key}?format=json`
     const result= await (await fetch(url)).json()
-    console.log(result);
+
     let newResult=[]
 
     for (let i = 0; i < result.length; i++) {
       const camera = result[i];
-      // const imageURL= await getImage(camera.Id)
       const imageURL= camera.CameraImageUrl
 
       const cameraObj={
         id:camera.Id,
         name:camera.Name,
-        imgURL: imageURL 
+        imgURL: imageURL,
+        isOn:false 
+
 
       }
 
@@ -42,11 +44,13 @@ function App() {
     setCameras(newResult)
   }
 
-  // async function updateAllImages(){
-  //   //Loopa igenom alla kameror, kör getimg 
-  // }
+  //Update all cameras. And fetches new images
+  async function updateAllCameras(){
+    //Loopa igenom alla kameror, kör getimg
+  }
 
-  async function getImage(id){
+  //Update one camera
+  async function updateCamera(id){
     console.log('getting image');
     const url=`http://data.goteborg.se/TrafficCamera/v1.0/CameraImage/${key}/${id}`
     const result = await (await fetch(url)).blob()
@@ -57,13 +61,14 @@ function App() {
 
   return (
     <div className="App">
-      <Header time={time} updateCameras={getAllCameras}></Header>
+      <Header time={time} updateCameras={updateAllCameras}></Header>
       <main>
         <div>
           <div>
             {cameras.map((data)=>{
 
-              return(<CameraCard key={data.name} imgURL={data.imgURL} name={data.name} ></CameraCard>)
+              return(<CameraCard updateCamera={updateCamera}
+                key={data.name} imgURL={data.imgURL} name={data.name} ></CameraCard>)
               // return(<CameraCard key={data.name} id={data.id} name={data.name.split('_')[1]} ></CameraCard>)
 
             })}
