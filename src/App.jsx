@@ -8,6 +8,7 @@ function App() {
 
   const [cameras, setCameras] = useState([])
   const [time, setTime] = useState(new Date().toLocaleTimeString())
+
   const key="be8d3bf5-7ce0-4677-8d47-2dd6ed7696fc"
 
   useEffect(()=>{
@@ -16,23 +17,43 @@ function App() {
   
   async function getAllCameras(){
     console.log('getting cameras');
+
     const url=`http://data.goteborg.se/TrafficCamera/v1.0/TrafficCameras/${key}?format=json`
     const result= await (await fetch(url)).json()
-    setCameras(result)
+    console.log(result);
+    let newResult=[]
+
+    for (let i = 0; i < result.length; i++) {
+      const camera = result[i];
+      // const imageURL= await getImage(camera.Id)
+      const imageURL= camera.CameraImageUrl
+
+      const cameraObj={
+        id:camera.Id,
+        name:camera.Name,
+        imgURL: imageURL 
+
+      }
+
+      newResult.push(cameraObj)
+      
+    }
+
+    setCameras(newResult)
   }
 
-  async function updateAllImages(){
-    //Loopa igenom alla kameror, kör getimg 
-  }
-
-  // async function getImage(id){
-  //   console.log('getting image');
-  //   const url=`http://data.goteborg.se/TrafficCamera/v1.0/CameraImage/${key}/${id}`
-  //   const result = await (await fetch(url)).blob()
-  //   const imgUrl=URL.createObjectURL(result)
-
-  //   return imgUrl
+  // async function updateAllImages(){
+  //   //Loopa igenom alla kameror, kör getimg 
   // }
+
+  async function getImage(id){
+    console.log('getting image');
+    const url=`http://data.goteborg.se/TrafficCamera/v1.0/CameraImage/${key}/${id}`
+    const result = await (await fetch(url)).blob()
+    const imgUrl=URL.createObjectURL(result)
+
+    return imgUrl
+  }
 
   return (
     <div className="App">
@@ -41,15 +62,9 @@ function App() {
         <div>
           <div>
             {cameras.map((data)=>{
-              const obj={
-                id:data.Id,
-                name:data.Name.split('_')[1],
-                apiKey:key
-              }
 
-              return(<CameraCard getImage={getImage} key={data.Name} data={obj}></CameraCard>)
-              
-
+              return(<CameraCard key={data.name} imgURL={data.imgURL} name={data.name} ></CameraCard>)
+              // return(<CameraCard key={data.name} id={data.id} name={data.name.split('_')[1]} ></CameraCard>)
 
             })}
 
