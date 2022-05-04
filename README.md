@@ -5,7 +5,7 @@
 Applikationen ska utgöras av ett smidigt grännsnitt där användare kan få en överblick av alla trafikkameror i Göteborg och bilderna som de visar. De ska även kunna se vart dessa kameror sitter rent fysikt i staden. Delvis genom att kamerans namn visas men även genom möjligheten för användaren att visa kamerans position på en karta.
 
 ## 🖼 Visuella skisser
-
+![Figma skiss av sidan](/skiss.png)
 
 ## 📆 Tidsplanering
 
