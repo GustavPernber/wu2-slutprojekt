@@ -12,9 +12,9 @@ Applikationen ska utgöras av ett smidigt grännsnitt där användare kan få en
 
 | Vecka | Att göra |
 | -----|-------- |
-| 17 | Idé planering och figma skisser ✅|
-| 18 | Sätta upp projektet. Börja med layout och koppla till Göteborgs API ✅|
-| 19 | Få till uppdateringar av kameror. Både för en specifik kamera och alla samtidigt.  |
-| 20 | Implementera sök funktion. Möjligtvis implementera funktion att visa på karta. Förslagsvis google maps API |
+| 17 | Idé planering och figma skisser ✅ <br /> Sätta upp projektet. ✅|
+| 18 | Börja med layout. ✅ <br/> Koppla till Göteborgs API ✅|
+| 19 | Uppdatera en kamera. ✅ <br /> Uppdatera alla kameror. ✅ <br /> Google maps. ✅ <br /> Sökfunktion ✅|
+
 
 
