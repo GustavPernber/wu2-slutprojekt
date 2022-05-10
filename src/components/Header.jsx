@@ -6,12 +6,12 @@ export default function Header(props) {
 
 				<div className="search">
 					<input
+                        onChange={props.handleSearch}
 						type="text"
 						placeholder="Vilken kamera vill du se?"
 					/>
                     <div className="icon">
 					    <span className="material-icons">search</span>
-
                     </div>
 				</div>
 
