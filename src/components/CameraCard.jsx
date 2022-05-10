@@ -26,13 +26,13 @@ export default function CameraCard(props){
                 <h1>{props.name}</h1>
 
                 <div>
-                    <p>Senast uppdaterad: {props.isOn}</p>
+                    <p>Senast uppdaterad: {props.time}</p>
                     <div onClick={handleUpdateClick} className={`updateBtn ${animate ? "animate" : ""}`} >
                         
-                        <p className="update">Uppdatera</p>
                         <span className="material-icons">
                             refresh
                         </span>
+                        <p className="update">Uppdatera</p>
 
                     </div>
                 </div>
