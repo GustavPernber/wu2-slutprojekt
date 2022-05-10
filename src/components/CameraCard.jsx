@@ -15,6 +15,14 @@ export default function CameraCard(props){
         props.updateCamera(props.id)
     }
 
+    function handleMap(){
+        console.log('map click');
+        const cords=props.geometry.split('(')[1].split(')')[0].split(' ')
+       const url=`https://www.google.com/maps/search/${cords[1]},${cords[0]}`
+       window.open(url, "_blank")
+
+    }
+
     return(
         <article className="cameraCard">
             <figure>
@@ -37,7 +45,7 @@ export default function CameraCard(props){
                     </div>
                 </div>
 
-                <button>
+                <button onClick={handleMap}>
                     Visa på karta
                 </button>
             </div>
