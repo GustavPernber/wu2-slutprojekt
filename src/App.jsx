@@ -1,78 +1,95 @@
-import Header from './components/Header'
-import CameraCard from './components/CameraCard'
-import './scss/main.css'
-import {useEffect, useState} from 'react'
-
+import Header from "./components/Header";
+import CameraCard from "./components/CameraCard";
+import "./scss/main.css";
+import { useEffect, useState } from "react";
 
 function App() {
+  const date=new Date()
+	const [cameras, setCameras] = useState([]);
+	const [time, setTime] = useState(`${date.toLocaleTimeString().split(':')[0]}:${date.toLocaleTimeString().split(':')[1]}`);
 
-  const [cameras, setCameras] = useState([])
-  const [time, setTime] = useState(new Date().toLocaleTimeString())
+	const key = "be8d3bf5-7ce0-4677-8d47-2dd6ed7696fc";
 
-  const key="be8d3bf5-7ce0-4677-8d47-2dd6ed7696fc"
+	useEffect(() => {
+		getAllCameras();
+	}, []);
 
-  useEffect(()=>{
-    getAllCameras()
-  },[])
-  
-  async function getAllCameras(){
-    console.log('getting cameras');
+	//Fetches all cameras and sets in state
+	async function getAllCameras() {
+		console.log("getting cameras");
 
-    const url=`http://data.goteborg.se/TrafficCamera/v1.0/TrafficCameras/${key}?format=json`
-    const result= await (await fetch(url)).json()
-    console.log(result);
-    let newResult=[]
+		const url = `http://data.goteborg.se/TrafficCamera/v1.0/TrafficCameras/${key}?format=json`;
+		const result = await (await fetch(url)).json();
 
-    for (let i = 0; i < result.length; i++) {
-      const camera = result[i];
-      // const imageURL= await getImage(camera.Id)
-      const imageURL= camera.CameraImageUrl
+		let newResult = [];
 
-      const cameraObj={
-        id:camera.Id,
-        name:camera.Name,
-        imgURL: imageURL 
+		for (let i = 0; i < result.length; i++) {
+			const camera = result[i];
+			const imageURL = camera.CameraImageUrl;
 
-      }
+			const cameraObj = {
+				id: camera.Id,
+				name: camera.Name,
+				imgURL: imageURL,
+				time:time
+			};
 
-      newResult.push(cameraObj)
-      
-    }
+			newResult.push(cameraObj);
+		}
 
-    setCameras(newResult)
-  }
+		setCameras(newResult);
+	}
 
-  // async function updateAllImages(){
-  //   //Loopa igenom alla kameror, kör getimg 
-  // }
+	//Update all cameras. And fetches new images
+	async function updateAllCameras() {
+		//Loopa igenom alla kameror, kör getimg
+	}
 
-  async function getImage(id){
-    console.log('getting image');
-    const url=`http://data.goteborg.se/TrafficCamera/v1.0/CameraImage/${key}/${id}`
-    const result = await (await fetch(url)).blob()
-    const imgUrl=URL.createObjectURL(result)
+	//Update one camera in state
+	async function updateCamera(id) {
+		console.log("updating one camera");
+		console.log(id);
 
-    return imgUrl
-  }
+		let camerasCopy = [...cameras];
+		let camera = camerasCopy.find((object) => object.id === id);
 
-  return (
-    <div className="App">
-      <Header time={time} updateCameras={getAllCameras}></Header>
-      <main>
-        <div>
-          <div>
-            {cameras.map((data)=>{
+		const url = `http://data.goteborg.se/TrafficCamera/v1.0/CameraImage/${key}/${id}`;
+		const result = await (await fetch(url)).blob();
+		const imgUrl = URL.createObjectURL(result);
+    
+    const dateString=new Date().toLocaleTimeString().split(':')
+		camera.time = `${dateString[0]}:${dateString[1]}`
 
-              return(<CameraCard key={data.name} imgURL={data.imgURL} name={data.name} ></CameraCard>)
-              // return(<CameraCard key={data.name} id={data.id} name={data.name.split('_')[1]} ></CameraCard>)
 
-            })}
+		camera.imgURL = imgUrl;
 
-          </div>
-        </div>
-      </main>
-    </div>
-  );
+		setCameras(camerasCopy);
+	}
+
+	return (
+		<div className="App">
+			<Header time={time} updateCameras={updateAllCameras}></Header>
+
+			<main>
+				<div>
+					<div>
+						{cameras.map((data) => {
+							return (
+								<CameraCard
+									updateCamera={updateCamera}
+									key={data.name}
+									id={data.id}
+									imgURL={data.imgURL}
+									time={data.time}
+									name={data.name}
+								></CameraCard>
+							);
+						})}
+					</div>
+				</div>
+			</main>
+		</div>
+	);
 }
 
 export default App;

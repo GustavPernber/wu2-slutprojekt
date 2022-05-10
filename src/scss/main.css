@@ -193,8 +193,8 @@ article.cameraCard > div {
   display: grid;
   -ms-grid-columns: 1fr 1fr;
       grid-template-columns: 1fr 1fr;
-  -ms-grid-rows: 1fr 2rem 1fr;
-      grid-template-rows: 1fr 2rem 1fr;
+  -ms-grid-rows: 1fr 1rem 1fr;
+      grid-template-rows: 1fr 1rem 1fr;
 }
 
 article.cameraCard > div > div {
@@ -255,7 +255,7 @@ article.cameraCard > div > div > div.updateBtn.animate span {
 article.cameraCard > div > div > div.updateBtn span {
   color: #38BDF8;
   font-size: 1.2rem;
-  margin-top: 0.1rem;
+  margin-right: 0.3rem;
 }
 
 article.cameraCard > div > div > div.updateBtn p.update {
@@ -328,7 +328,7 @@ main > div > div {
       -ms-flex-align: center;
           align-items: center;
   justify-content: center;
-  gap: 4rem;
+  gap: 6rem;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
 }
