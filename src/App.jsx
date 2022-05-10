@@ -31,11 +31,13 @@ function App() {
 				id: camera.Id,
 				name: camera.Name,
 				imgURL: imageURL,
-				time:time
+				time:time,
+        geometry:camera.Geometry.WGS84
 			};
-
+      
 			newResult.push(cameraObj);
 		}
+    console.log(result);
 
 		setCameras(newResult);
 	}
@@ -94,6 +96,7 @@ function App() {
 								<CameraCard
 									updateCamera={updateCamera}
 									key={data.name}
+                  geometry={data.geometry}
 									id={data.id}
 									imgURL={data.imgURL}
 									time={data.time}
