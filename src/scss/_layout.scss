@@ -17,9 +17,8 @@ main{
     width: 100%;
 
     >div{
-        
-    
-        width: $width;
+
+        width: 85%;
         // width: 100%; 
         >div{
             @include center;

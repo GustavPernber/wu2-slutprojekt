@@ -193,11 +193,12 @@ article.cameraCard > div {
   display: grid;
   -ms-grid-columns: 1fr 1fr;
       grid-template-columns: 1fr 1fr;
-  -ms-grid-rows: 1fr 1rem 1fr;
-      grid-template-rows: 1fr 1rem 1fr;
+  -ms-grid-rows: 5.5rem auto;
+      grid-template-rows: 5.5rem auto;
 }
 
 article.cameraCard > div > div {
+  margin-top: 1.5rem;
   -ms-flex-item-align: end;
       align-self: flex-end;
   -ms-grid-column: 1;
@@ -218,7 +219,7 @@ article.cameraCard > div > div {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-  gap: 0.1rem;
+  gap: 0.8rem;
 }
 
 article.cameraCard > div > div > p {
@@ -266,8 +267,10 @@ article.cameraCard > div > div > div.updateBtn p.update {
 
 article.cameraCard > div h1 {
   grid-column: span 2;
-  grid-row: span 2;
+  -ms-grid-row: 1;
+  grid-row: 1;
   font-weight: 400;
+  border-bottom: 1px solid #374051;
 }
 
 article.cameraCard > div button {
@@ -314,7 +317,7 @@ main {
 }
 
 main > div {
-  width: 78%;
+  width: 85%;
 }
 
 main > div > div {
