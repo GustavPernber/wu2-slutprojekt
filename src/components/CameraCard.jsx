@@ -23,7 +23,7 @@ export default function CameraCard(props){
             </figure>
 
             <div>
-                <h1>{props.name}</h1>
+                <h1>{props.name.split('_')[1]}</h1>
 
                 <div>
                     <p>Senast uppdaterad: {props.time}</p>

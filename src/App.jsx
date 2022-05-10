@@ -16,7 +16,7 @@ function App() {
 
 	//Fetches all cameras and sets in state
 	async function getAllCameras() {
-		console.log("getting cameras");
+		console.log("getting all cameras");
 
 		const url = `http://data.goteborg.se/TrafficCamera/v1.0/TrafficCameras/${key}?format=json`;
 		const result = await (await fetch(url)).json();
@@ -42,12 +42,28 @@ function App() {
 
 	//Update all cameras. And fetches new images
 	async function updateAllCameras() {
-		//Loopa igenom alla kameror, kör getimg
+    console.log('updating all cameras');
+		
+    let newCameras = [...cameras]
+    const currentTime=`${date.toLocaleTimeString().split(':')[0]}:${date.toLocaleTimeString().split(':')[1]}`
+    setTime(currentTime)
+    
+    for (let i = 0; i < newCameras.length; i++) {
+      let camera = newCameras[i];
+
+      const url = `http://data.goteborg.se/TrafficCamera/v1.0/CameraImage/${key}/${camera.id}`;
+      const result = await (await fetch(url)).blob();
+      const imgUrl = URL.createObjectURL(result);
+      camera.imgURL=imgUrl
+      camera.time=currentTime
+    }
+    
+    setCameras(newCameras)
 	}
 
 	//Update one camera in state
 	async function updateCamera(id) {
-		console.log("updating one camera");
+		console.log("updating one camera with id:");
 		console.log(id);
 
 		let camerasCopy = [...cameras];
