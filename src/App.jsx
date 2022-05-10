@@ -85,9 +85,7 @@ function App() {
 
 
   function handleSearch(e){
-    console.log('searching');
-    let lowercase=e.target.value.toLowerCase()
-    console.log(lowercase);
+    let lowercase=e.target.value.toLowerCase().replace(/\s+/g, '')
     setInputSearch(lowercase)
   }
 
@@ -99,17 +97,21 @@ function App() {
 				<div>
 					<div>
 						{cameras.map((data) => {
-							return (
-								<CameraCard
-									updateCamera={updateCamera}
-									key={data.name}
-                  geometry={data.geometry}
-									id={data.id}
-									imgURL={data.imgURL}
-									time={data.time}
-									name={data.name}
-								></CameraCard>
-							);
+              if (data.name.toLowerCase().replace(/\s+/g, '').includes(inputSearch)) {
+                return (
+                  <CameraCard
+                    updateCamera={updateCamera}
+                    key={data.name}
+                    geometry={data.geometry}
+                    id={data.id}
+                    imgURL={data.imgURL}
+                    time={data.time}
+                    name={data.name}
+                  ></CameraCard>
+                );
+                
+              }
+
 						})}
 					</div>
 				</div>
