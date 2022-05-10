@@ -141,7 +141,7 @@ h1, h2, h3, h4, h5, h6, p, input, a, button {
 
 article.cameraCard {
   border-radius: 6px;
-  width: 22rem;
+  width: 25rem;
   background-color: #1E293B;
   padding: 1.4rem 1.4rem 2rem 1.4rem;
   display: -webkit-box;
@@ -166,7 +166,7 @@ article.cameraCard > figure {
   border: 2px solid white;
   border-radius: 6px;
   width: 100%;
-  height: 15rem;
+  height: 17rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -177,11 +177,11 @@ article.cameraCard > figure {
       -ms-flex-align: center;
           align-items: center;
   overflow: hidden;
-  -o-object-fit: cover;
-     object-fit: cover;
 }
 
 article.cameraCard > figure > img {
+  -o-object-fit: cover;
+     object-fit: cover;
   height: 100%;
 }
 
@@ -193,8 +193,8 @@ article.cameraCard > div {
   display: grid;
   -ms-grid-columns: 1fr 1fr;
       grid-template-columns: 1fr 1fr;
-  -ms-grid-rows: 5.5rem auto;
-      grid-template-rows: 5.5rem auto;
+  -ms-grid-rows: 6rem auto;
+      grid-template-rows: 6rem auto;
 }
 
 article.cameraCard > div > div {
