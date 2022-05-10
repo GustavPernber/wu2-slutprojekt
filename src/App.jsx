@@ -7,6 +7,7 @@ function App() {
   const date=new Date()
 	const [cameras, setCameras] = useState([]);
 	const [time, setTime] = useState(`${date.toLocaleTimeString().split(':')[0]}:${date.toLocaleTimeString().split(':')[1]}`);
+  const [inputSearch, setInputSearch] = useState("")
 
 	const key = "be8d3bf5-7ce0-4677-8d47-2dd6ed7696fc";
 
@@ -14,7 +15,7 @@ function App() {
 		getAllCameras();
 	}, []);
 
-	//Fetches all cameras and sets in state
+
 	async function getAllCameras() {
 		console.log("getting all cameras");
 
@@ -42,7 +43,6 @@ function App() {
 		setCameras(newResult);
 	}
 
-	//Update all cameras. And fetches new images
 	async function updateAllCameras() {
     console.log('updating all cameras');
 		
@@ -63,7 +63,6 @@ function App() {
     setCameras(newCameras)
 	}
 
-	//Update one camera in state
 	async function updateCamera(id) {
 		console.log("updating one camera with id:");
 		console.log(id);
@@ -84,25 +83,35 @@ function App() {
 		setCameras(camerasCopy);
 	}
 
+
+  function handleSearch(e){
+    let lowercase=e.target.value.toLowerCase().replace(/\s+/g, '')
+    setInputSearch(lowercase)
+  }
+
 	return (
 		<div className="App">
-			<Header time={time} updateCameras={updateAllCameras}></Header>
+			<Header handleSearch={handleSearch} time={time} updateCameras={updateAllCameras}></Header>
 
 			<main>
 				<div>
 					<div>
 						{cameras.map((data) => {
-							return (
-								<CameraCard
-									updateCamera={updateCamera}
-									key={data.name}
-                  geometry={data.geometry}
-									id={data.id}
-									imgURL={data.imgURL}
-									time={data.time}
-									name={data.name}
-								></CameraCard>
-							);
+              if (data.name.toLowerCase().replace(/\s+/g, '').includes(inputSearch)) {
+                return (
+                  <CameraCard
+                    updateCamera={updateCamera}
+                    key={data.name}
+                    geometry={data.geometry}
+                    id={data.id}
+                    imgURL={data.imgURL}
+                    time={data.time}
+                    name={data.name}
+                  ></CameraCard>
+                );
+                
+              }
+
 						})}
 					</div>
 				</div>
