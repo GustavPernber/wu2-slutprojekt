@@ -70,7 +70,7 @@ header.siteHeader > div {
       -ms-flex-pack: justify;
           justify-content: space-between;
   padding-top: 4rem;
-  width: 78%;
+  width: 80%;
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
@@ -370,7 +370,7 @@ main {
 }
 
 main > div {
-  width: 85%;
+  width: 90%;
 }
 
 main > div > div {
