@@ -8,7 +8,7 @@ export default function Header(props) {
 					<input
                         onChange={props.handleSearch}
 						type="text"
-						placeholder="Vilken kamera vill du se?"
+						placeholder="Vilka kameror vill du se?"
 					/>
                     <div className="icon">
 					    <span className="material-icons">search</span>

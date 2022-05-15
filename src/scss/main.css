@@ -94,7 +94,7 @@ header.siteHeader > div div.search {
       -ms-flex-align: center;
           align-items: center;
   height: 3rem;
-  width: 15rem;
+  width: 20rem;
 }
 
 header.siteHeader > div div.search:hover div.icon, header.siteHeader > div div.search:focus div.icon, header.siteHeader > div div.search:focus-within div.icon, header.siteHeader > div div.search:focus-visible div.icon {
